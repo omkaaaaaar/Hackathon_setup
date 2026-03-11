@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+
 
 function App() {
-
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/test")
-      .then(res => res.json())
-      .then(data => setMessage(data.message));
-  }, []);
-
   return (
-    <div>
-      <h1>Hackathon Project</h1>
-      <p>{message}</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
